@@ -1,4 +1,4 @@
-# Reading-the-license-plate-from-the-moving-ca
+# Reading-the-license-plate-from-the-moving-Car
 
 ## Description
 
