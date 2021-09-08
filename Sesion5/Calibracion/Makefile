@@ -1,0 +1,20 @@
+EXECUTABLE = calibracion 
+SOURCES = calibracion.cpp
+CC = g++
+ODIR=./obj/
+SRCDIR=./src/
+INCLUDE = -I./include `pkg-config --cflags opencv4`
+CFLAGS=-c -Wall $(INCLUDE)
+LIBS = -L/usr/local/lib -lm `pkg-config --libs opencv4`
+
+OBJ = $(SOURCES:.cpp=.o)
+OBJS = $(patsubst %,$(ODIR)%,$(OBJ))
+
+${EXECUTABLE}: ${OBJS}
+	${CC} -o ${EXECUTABLE} ${OBJS} ${LIBS} ${COMMON_LIBS} 
+
+$(ODIR)%.o : $(SRCDIR)%.cpp
+	$(CC) $(CFLAGS) $< -o $@
+
+clean:
+	rm -f ${OBJS} $(EXECUTABLE) dat/*orners.png dat/*ndist.png
